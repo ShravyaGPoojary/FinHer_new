@@ -1,0 +1,137 @@
+/* ===== FinHer Design Tokens ===== */
+:root {
+  --ink: #241934;
+  --ink-soft: #6b5c7a;
+  --gold: #c99a3c;
+  --gold-light: #e8cf95;
+  --rose: #b4536b;
+  --sage: #5b8c72;
+  --paper: #fbf9f5;
+  --paper-dim: #f1ece3;
+  --border: #e3dccf;
+  --white: #ffffff;
+  --danger: #b4536b;
+  --success: #5b8c72;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(36, 25, 52, 0.08);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0 0 8px; letter-spacing: -0.01em; }
+h1 { font-size: 2.1rem; } h2 { font-size: 1.5rem; } h3 { font-size: 1.15rem; }
+p { margin: 0 0 12px; color: var(--ink-soft); }
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.figure, .amount { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.amount-expense { color: var(--rose); }
+.amount-income, .amount-savings { color: var(--sage); }
+
+/* ===== Layout ===== */
+.app-container { max-width: 1080px; margin: 0 auto; padding: 24px 20px 64px; }
+.page-loading { text-align: center; padding: 60px 0; color: var(--ink-soft); }
+
+/* ===== Navbar ===== */
+.navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 28px; background: var(--ink); color: var(--paper);
+}
+.navbar-brand { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: var(--gold-light); }
+.navbar-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.navbar-links a, .btn-link {
+  color: var(--paper); font-size: 0.9rem; font-weight: 500; opacity: 0.85;
+  background: none; border: none; cursor: pointer; font-family: var(--font-body);
+}
+.navbar-links a:hover, .btn-link:hover { opacity: 1; text-decoration: none; color: var(--gold-light); }
+
+/* ===== Cards - the "ledger tab" motif: colored left border ===== */
+.card {
+  background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--gold);
+  border-radius: var(--radius); padding: 20px 22px; margin-bottom: 18px; box-shadow: var(--shadow);
+}
+.card--expense { border-left-color: var(--rose); }
+.card--income { border-left-color: var(--sage); }
+.grid { display: grid; gap: 16px; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+/* ===== Forms ===== */
+.form-group { margin-bottom: 14px; }
+label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 5px; }
+input, select, textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+  font-family: var(--font-body); font-size: 0.95rem; background: var(--paper);
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+.form-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.form-row > * { flex: 1; min-width: 160px; }
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-block; padding: 10px 20px; border-radius: 8px; border: none;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.92rem; cursor: pointer;
+  background: var(--ink); color: var(--paper); transition: transform 0.1s ease, opacity 0.15s ease;
+}
+.btn:hover { opacity: 0.9; }
+.btn:active { transform: scale(0.98); }
+.btn-gold { background: var(--gold); color: var(--ink); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-danger { background: var(--rose); color: white; }
+.btn-sm { padding: 6px 12px; font-size: 0.82rem; }
+.btn-block { width: 100%; }
+
+/* ===== Ledger-style table ===== */
+.ledger { width: 100%; border-collapse: collapse; }
+.ledger th {
+  text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--ink-soft); border-bottom: 2px solid var(--ink); padding: 8px 10px;
+}
+.ledger td { padding: 10px 10px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.ledger td.figure { text-align: right; }
+.ledger tr:hover { background: var(--paper-dim); }
+
+.pill {
+  display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 0.75rem;
+  font-weight: 600; background: var(--paper-dim); color: var(--ink);
+}
+
+.error-text { color: var(--rose); font-size: 0.85rem; margin: -6px 0 12px; }
+.muted { color: var(--ink-soft); font-size: 0.85rem; }
+.stat-value { font-family: var(--font-mono); font-size: 1.7rem; font-weight: 500; }
+.stat-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); }
+
+/* ===== Hero (Landing page) ===== */
+.hero {
+  background: var(--ink); color: var(--paper); border-radius: var(--radius);
+  padding: 56px 40px; margin-bottom: 32px; position: relative; overflow: hidden;
+}
+.hero h1 { color: var(--paper); font-size: 2.6rem; max-width: 560px; }
+.hero p { color: var(--gold-light); font-size: 1.05rem; max-width: 480px; }
+.ledger-line {
+  display: flex; align-items: center; gap: 3px; margin: 28px 0 8px; opacity: 0.7;
+}
+.ledger-line .tick { width: 1px; height: 14px; background: var(--gold-light); }
+.ledger-line .tick.major { height: 22px; background: var(--gold); }
+
+@media (max-width: 640px) {
+  .hero { padding: 36px 22px; }
+  .hero h1 { font-size: 1.9rem; }
+  .navbar { flex-direction: column; gap: 10px; align-items: flex-start; }
+}
