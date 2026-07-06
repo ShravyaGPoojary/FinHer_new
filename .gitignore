@@ -1,0 +1,20 @@
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+
+# ML models
+saved_models/
+*.pkl
+
+# Build folders
+build/
+dist/
+
+# Logs
+npm-debug.log*
